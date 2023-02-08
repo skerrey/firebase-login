@@ -11,13 +11,21 @@ export default function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
-  function signup(email, password) {
+  function signup(email, password) { // Signup
     return auth.createUserWithEmailAndPassword(email, password);
   };
 
-  function login(email, password) { 
+  function login(email, password) { // Login
     return auth.signInWithEmailAndPassword(email, password); // Change this function to log into server (firebase alternative)
   };
+
+  function logout() { // Logout
+    return auth.signOut();
+  }
+
+  function resetPassword(email) {
+    return auth.sendPasswordResetEmail(email);
+  }
 
   useEffect(() => { // set user on mount
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -31,7 +39,9 @@ export default function AuthProvider({ children }) {
   const value = {
     currentUser,
     login,
-    signup
+    signup,
+    logout,
+    resetPassword
   };
 
   return (
