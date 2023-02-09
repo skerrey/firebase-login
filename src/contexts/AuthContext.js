@@ -23,8 +23,16 @@ export default function AuthProvider({ children }) {
     return auth.signOut();
   }
 
-  function resetPassword(email) {
+  function resetPassword(email) { // Reset password
     return auth.sendPasswordResetEmail(email);
+  }
+
+  function updateEmail(email) { // Update email
+    return currentUser.updateEmail(email);
+  }
+
+  function updatePassword(password) { // Update password
+    return currentUser.updatePassword(password);
   }
 
   useEffect(() => { // set user on mount
@@ -41,7 +49,9 @@ export default function AuthProvider({ children }) {
     login,
     signup,
     logout,
-    resetPassword
+    resetPassword,
+    updateEmail,
+    updatePassword
   };
 
   return (

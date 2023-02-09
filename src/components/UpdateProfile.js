@@ -7,27 +7,36 @@ export default function UpdateProfile() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { currentUser } = useAuth();
+  const { currentUser, updatePassword, updateEmail } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  async function handleSubmit(e) { // signup user on submit
+  function handleSubmit(e) { // signup user on submit
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) { // check if passwords match
       return setError('Passwords do not match')
     }
 
-    try { // try to signup user
-      setError('');
-      setLoading(true);
-      // await signup(emailRef.current.value, passwordRef.current.value);
-      // navigate('/'); // navigate home after signup
-    } catch (e) {
-      setError('Failed to create an account');
+    const promises = []; // Update email and password
+    setLoading(true);
+    setError('');
+
+    if (emailRef.current.value !== currentUser.email) {
+      promises.push(updateEmail(emailRef.current.value))
     }
-    setLoading(false);
+    if (passwordRef.current.value) {
+      promises.push(updatePassword(passwordRef.current.value))
+    }
+
+    Promise.all(promises).then(() => { // navigate home after update
+      navigate('/');
+    }).catch(() => {
+      setError('Failed to update account');
+    }).finally(() => {
+        setLoading(false);
+    })
   }
 
   return (
