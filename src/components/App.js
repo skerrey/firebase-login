@@ -1,8 +1,12 @@
+// Description: This is the main component of the application. It is the parent component of all other components. 
+
 import React from 'react';
 import Signup from './Signup';
 import { Container } from 'react-bootstrap';
 import AuthProvider from '../contexts/AuthContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Import components
 import Dashboard from './Dashboard';
 import Login from './Login';
 import PrivateRoute  from './PrivateRoute';
@@ -11,7 +15,8 @@ import UpdateProfile from './UpdateProfile';
 
 function App() {
   return (
-      <Container className="d-flex align-items-center justify-content-center" style={{
+    <>
+      <div className="container d-flex justify-content-center align-items-center" style={{
         minHeight: "100vh"
       }}>
         <div className="w-100" style={{ maxWidth: "400px" }}>
@@ -27,7 +32,8 @@ function App() {
             </AuthProvider>
           </Router>
         </div>
-      </Container>
+      </div>
+    </>
   );
 }
 
