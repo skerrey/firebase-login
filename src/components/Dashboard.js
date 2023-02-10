@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
   const [error, setError] = useState('');
-  const { currentUser, logout } = useAuth(); // get current user from AuthContext}
+  const { currentUser, logout } = useAuth(); // get current user from AuthContext
   const navigate = useNavigate();
 
   async function handleLogout() { // logout user on click
