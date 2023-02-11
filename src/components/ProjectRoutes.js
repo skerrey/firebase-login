@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthProvider from '../contexts/AuthContext';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 // Import components
 import Dashboard from './Dashboard';
@@ -14,7 +14,7 @@ import Home from './Home';
 
 export default function ProjectRoutes() {
   return (
-    <Router>  
+    <>  
       <div className="container w-100 d-flex justify-content-center align-items-center" style={{
         minHeight: '100vh',
       }}>
@@ -31,6 +31,6 @@ export default function ProjectRoutes() {
           </Routes>
         </div>
       </div>
-    </Router>
+    </>
   )
 }
