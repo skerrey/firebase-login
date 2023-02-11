@@ -2,10 +2,12 @@
 
 import React, { useState} from 'react';
 import { 
-  Container, Dropdown, Nav, Navbar, NavDropdown, Offcanvas
+  Container, Nav, Navbar, NavDropdown
 } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+
+import { IoMdSettings } from "react-icons/io";
 
 export default function Navigation() {
   const [error, setError] = useState('');
@@ -28,20 +30,21 @@ export default function Navigation() {
 
   return (
     <>
-      <Navbar bg="light" expand={expand}>
+      <Navbar bg="light" fixed="top" expand={expand}>
         <Container>
           <Navbar.Brand href="/">Firebase Login</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav" alginRight>
-            <Nav className="me-auto">
+          <Navbar.Collapse id="basic-navbar-nav" >
+            <Nav className="ms-auto" align="end">
               <Nav.Link href="/">Home</Nav.Link>
 
               {!currentUser ? 
                 <Nav.Link href="/login">Login</Nav.Link> :               
                 <NavDropdown title={currentUser.email} id="basic-nav-dropdown">
                   <NavDropdown.Item href="/dashboard">Dashboard</NavDropdown.Item>
+                  <NavDropdown.Item href="/settings">Settings <IoMdSettings /> </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4" onClick={handleLogout}>
+                  <NavDropdown.Item onClick={handleLogout}>
                     Log Out
                   </NavDropdown.Item>
                 </NavDropdown>
@@ -51,30 +54,6 @@ export default function Navigation() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-      <Navbar  bg="light" expand={expand} className="mb-3">
-          <Container fluid>
-            <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-            <Navbar.Offcanvas
-              id={`offcanvasNavbar-expand-${expand}`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end"
-            >
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  Offcanvas
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">Home</Nav.Link>
-                  <Nav.Link href="#action2">Link</Nav.Link>
-                </Nav>
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
-          </Container>
-        </Navbar>
     </>
   )
 }
