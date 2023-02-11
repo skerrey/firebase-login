@@ -15,22 +15,14 @@ import Home from './Home';
 export default function ProjectRoutes() {
   return (
     <>  
-      <div className="container w-100 d-flex justify-content-center align-items-center" style={{
-        minHeight: '100vh',
-      }}>
-        <div className="w-100" style={{
-          maxWidth: '400px',
-        }}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
-            <Route path="/update-profile" element={<PrivateRoute><UpdateProfile /></PrivateRoute>}/>
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-          </Routes>
-        </div>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
+        <Route path="/settings" element={<PrivateRoute><UpdateProfile /></PrivateRoute>}/>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+      </Routes>
     </>
   )
 }
