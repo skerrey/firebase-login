@@ -1,0 +1,16 @@
+/* 
+  Description: Global styling for login, signout, forgot password, and update profile component
+*/
+
+.parent-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.child-container {
+  width: 100%;
+  max-width: 400px;
+}
