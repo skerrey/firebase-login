@@ -10,12 +10,10 @@ function App() {
     <>
       <AuthProvider>
         <Router>
-        <Navigation />
-        <ProjectRoutes />
+          <Navigation />
+          <ProjectRoutes />
         </Router>
-
       </AuthProvider>
-
     </>
   );
 }
