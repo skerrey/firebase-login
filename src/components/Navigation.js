@@ -5,9 +5,23 @@ import {
   Container, Nav, Navbar, NavDropdown
 } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navigation() {
-  const { currentUser } = useAuth();
+  const [error, setError] = useState('');
+  const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
+
+  async function handleLogout() { // logout user on click
+    setError('');
+
+    try {
+      await logout();
+      navigate('/login');
+    } catch {
+      setError('Failed to log out');
+    }
+  }
 
 
   return (
@@ -18,21 +32,20 @@ export default function Navigation() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/">Home  </Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              {/* <NavDropdown title="title" id="basic-nav-dropdown"> */}
-              <NavDropdown title={currentUser ? currentUser.email : "Login"} id="basic-nav-dropdown">
-              {/* <NavDropdown title={JSON.stringify(auth.userEmail).slice(1, -1)} id="basic-nav-dropdown"> */}
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
+              <Nav.Link href="/">Home</Nav.Link>
+
+              {/* Conditional display if user logged in */}
+              {!currentUser ? 
+                <Nav.Link href="/login">Login</Nav.Link> :               
+                <NavDropdown title={currentUser.email} id="basic-nav-dropdown">
+                  <NavDropdown.Item href="/dashboard">Dashboard</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.4" onClick={handleLogout}>
+                    Log Out
+                  </NavDropdown.Item>
+                </NavDropdown>
+              }
+
             </Nav>
           </Navbar.Collapse>
         </Container>
