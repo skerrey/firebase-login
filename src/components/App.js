@@ -3,14 +3,17 @@
 import ProjectRoutes from "./ProjectRoutes";
 import Navigation from "./Navigation";
 import AuthProvider from "../contexts/AuthContext";
-
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
     <>
       <AuthProvider>
+        <Router>
         <Navigation />
         <ProjectRoutes />
+        </Router>
+
       </AuthProvider>
 
     </>
