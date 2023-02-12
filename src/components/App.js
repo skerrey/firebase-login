@@ -2,12 +2,14 @@
 
 import ProjectRoutes from "./ProjectRoutes";
 import Navigation from "./Navigation";
+import Background from "./Background";
 import AuthProvider from "../contexts/AuthContext";
 import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
     <>
+      <Background />
       <AuthProvider>
         <Router>
           <Navigation />
