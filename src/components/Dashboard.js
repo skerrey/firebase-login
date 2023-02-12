@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
   const [error, setError] = useState('');
-  const { currentUser, logout } = useAuth(); // get current user from AuthContext
+  const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
 
   async function handleLogout() { // logout user on click
@@ -29,6 +29,8 @@ export default function Dashboard() {
             <Card.Body>
               <h2 className="text-center mb-4">Profile</h2>
               {error && <Alert variant="danger">{error}</Alert>}
+              <strong>Name:</strong> {currentUser.displayName}
+              <br />
               <strong>Email:</strong> {currentUser.email}
               <Link to="/settings" className="btn btn-primary w-100 mt-3">
                 Update Profile
