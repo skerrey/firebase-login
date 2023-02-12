@@ -10,7 +10,6 @@ export default function Home() {
         fontSize: "5em",
         color: "white",
         height: "100vh",
-        zIndex: "2",
       }}>
         Welcome to Firebase Login
       </div>
