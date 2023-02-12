@@ -4,7 +4,7 @@ export default function Background() {
   return (
     <>
       <div style={{
-        backgroundColor: "rgba(0, 0, 0, 0.25)",
+        backgroundColor: "rgba(0, 0, 0, 0.35)",
         opacity: "0.4",
         position: "absolute",
         zIndex: "-1",
