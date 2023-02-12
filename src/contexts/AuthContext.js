@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { auth } from '../firebase';
+import { updateProfile } from 'firebase/auth';
 
 const AuthContext = React.createContext();
 
@@ -14,6 +15,10 @@ export default function AuthProvider({ children }) {
   function signup(email, password) { // Signup
     return auth.createUserWithEmailAndPassword(email, password);
   };
+
+  function updateInfo(name) { // Update user info
+    return updateProfile(auth.currentUser, {displayName: name});
+  }
 
   function login(email, password) { // Login
     return auth.signInWithEmailAndPassword(email, password); // Change this function to log into server (firebase alternative)
@@ -51,7 +56,8 @@ export default function AuthProvider({ children }) {
     logout,
     resetPassword,
     updateEmail,
-    updatePassword
+    updatePassword,
+    updateInfo
   };
 
   return (
