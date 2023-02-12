@@ -4,10 +4,12 @@ import { useAuth } from '../contexts/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function UpdateProfile() {
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { currentUser, updatePassword, updateEmail } = useAuth();
+  const { currentUser, updatePassword, updateEmail, updateInfo } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -19,9 +21,24 @@ export default function UpdateProfile() {
       return setError('Passwords do not match')
     }
 
+    const name = firstNameRef.current.value + " " + lastNameRef.current.value;
+
+    // Capitalize first letter of first and last name upon signup
+    const capitalize = (name) => {
+      return name
+        .toLowerCase()
+        .split(' ')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+    };
+
     const promises = []; // Update email and password
     setLoading(true);
     setError('');
+
+    if (name !== currentUser.displayName) {
+      promises.push(updateInfo(capitalize(name)))
+    }
 
     if (emailRef.current.value !== currentUser.email) {
       promises.push(updateEmail(emailRef.current.value))
@@ -39,6 +56,9 @@ export default function UpdateProfile() {
     })
   }
 
+  // Split up current user's name into first and last name
+  var nameArr = currentUser.displayName.split(/\s+/);
+
   return (
     <>
       <div className="parent-container">
@@ -48,6 +68,14 @@ export default function UpdateProfile() {
               <h2 className="text-center mb-4">Update Profile</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
+                <Form.Group id="first-name">
+                  <Form.Label>First Name</Form.Label>
+                  <Form.Control type="text" ref={firstNameRef} required defaultValue={nameArr[0]} />
+                </Form.Group>
+                <Form.Group id="last-name">
+                  <Form.Label>Last Name</Form.Label>
+                  <Form.Control type="text" ref={lastNameRef} required defaultValue={nameArr[1]} />
+                </Form.Group>
                 <Form.Group id="email">
                   <Form.Label>Email</Form.Label>
                   <Form.Control type="email" ref={emailRef} required defaultValue={currentUser.email}/>

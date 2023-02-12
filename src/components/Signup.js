@@ -4,7 +4,8 @@ import { useAuth } from '../contexts/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function Signup() {
-  const nameRef = useRef();
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -13,6 +14,8 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+
+
   async function handleSubmit(e) { // signup user on submit
     e.preventDefault();
 
@@ -20,18 +23,30 @@ export default function Signup() {
       return setError('Passwords do not match')
     }
 
+    const name = firstNameRef.current.value + " " + lastNameRef.current.value;
+
+    // Capitalize first letter of first and last name upon signup
+    const capitalize = (name) => {
+      return name
+        .toLowerCase()
+        .split(' ')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+    };
+
     try { // try to signup user
       setError('');
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-      await updateInfo(nameRef.current.value);
-      navigate('/'); // navigate home after signup
+      await updateInfo(capitalize(name));
+      navigate('/');
     } catch (e) {
       setError('Failed to create an account');
       console.log(e);
     }
     setLoading(false);
   }
+
 
   return (
     <>
@@ -42,9 +57,13 @@ export default function Signup() {
               <h2 className="text-center mb-4">Sign Up</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
-                <Form.Group id="name">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control type="text" ref={nameRef} required />
+                <Form.Group id="first-name">
+                  <Form.Label>First Name</Form.Label>
+                  <Form.Control type="text" ref={firstNameRef} required />
+                </Form.Group>
+                <Form.Group id="last-name">
+                  <Form.Label>Last Name</Form.Label>
+                  <Form.Control type="text" ref={lastNameRef} required />
                 </Form.Group>
                 <Form.Group id="email">
                   <Form.Label>Email</Form.Label>
