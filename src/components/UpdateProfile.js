@@ -63,12 +63,12 @@ export default function UpdateProfile() {
                 <Button disabled={loading} className="w-100 mt-3" type="submit">
                   Update
                 </Button>
+                <div className="w-100 text-center mt-3">
+                  <Link to="/">Cancel</Link>
+                </div>
               </Form>
             </Card.Body>
           </Card>
-          <div className="w-100 text-center mt-2">
-            <Link to="/">Cancel</Link>
-          </div>
         </div>
       </div>
     </>
