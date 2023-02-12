@@ -32,15 +32,16 @@ export default function Navigation() {
     <>
       <Navbar bg="light" fixed="top" expand={expand}>
         <Container>
-          <Navbar.Brand href="/">Firebase Login</Navbar.Brand>
+          <Navbar.Brand href="/">Firebase Login App</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" >
             <Nav className="ms-auto" align="end">
               <Nav.Link href="/">Home</Nav.Link>
 
+              {/* If current user display dropdown, else display login */}
               {!currentUser ? 
                 <Nav.Link href="/login">Login</Nav.Link> :               
-                <NavDropdown title={currentUser.email} id="basic-nav-dropdown">
+                <NavDropdown title={currentUser.displayName} id="basic-nav-dropdown">
                   <NavDropdown.Item href="/dashboard">Dashboard</NavDropdown.Item>
                   <NavDropdown.Item href="/settings">Settings <IoMdSettings /> </NavDropdown.Item>
                   <NavDropdown.Divider />
