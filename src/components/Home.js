@@ -1,8 +1,10 @@
-import React from 'react';
-import { Container, Carousel } from 'react-bootstrap';
+// Description: Home page component
 
+import React from 'react';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function Home() {
+  const { currentUser } = useAuth();
   return (
     <div>
       <div className='d-flex justify-content-center align-items-center text-center' style={{
@@ -11,7 +13,15 @@ export default function Home() {
         color: "white",
         height: "100vh",
       }}>
-        Welcome to Firebase Login
+
+        {!currentUser ? 
+          <div>
+            Welcome to <br/> Firebase Login App
+          </div>      :               
+          <div>
+            Welcome <br/> {currentUser.displayName}
+          </div>
+        }
       </div>
     </div>
   )
