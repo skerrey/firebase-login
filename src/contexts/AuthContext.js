@@ -1,3 +1,5 @@
+// Description: Authentication Context for Firebase
+
 import React, { useContext, useState, useEffect } from 'react';
 import { auth } from '../firebase';
 import { updateProfile } from 'firebase/auth';

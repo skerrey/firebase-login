@@ -1,3 +1,5 @@
+// Description: Background image for site
+
 import React from 'react'
 
 export default function Background() {

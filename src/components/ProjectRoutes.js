@@ -1,5 +1,6 @@
+// Description: Routes for pages
+
 import React from 'react';
-import AuthProvider from '../contexts/AuthContext';
 import { Routes, Route } from 'react-router-dom';
 
 // Import components

@@ -11,7 +11,7 @@ import logo from '../img/logo.png'; // Logo from two sources: Prosymbols Premium
 import { IoMdSettings } from "react-icons/io";
 
 export default function Navigation() {
-  const [error, setError] = useState('');
+  const [, setError] = useState('');
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
 
