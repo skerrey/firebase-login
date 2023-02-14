@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "https://skerrey.github.io/firebase-login/static/css/main.0449c62c.css",
-    "main.js": "https://skerrey.github.io/firebase-login/static/js/main.c41b288c.js",
-    "index.html": "https://skerrey.github.io/firebase-login/index.html",
-    "main.0449c62c.css.map": "https://skerrey.github.io/firebase-login/static/css/main.0449c62c.css.map",
-    "main.c41b288c.js.map": "https://skerrey.github.io/firebase-login/static/js/main.c41b288c.js.map"
+    "main.css": "/firebase-login/static/css/main.0449c62c.css",
+    "main.js": "/firebase-login/static/js/main.26ac7b78.js",
+    "index.html": "/firebase-login/index.html",
+    "main.0449c62c.css.map": "/firebase-login/static/css/main.0449c62c.css.map",
+    "main.26ac7b78.js.map": "/firebase-login/static/js/main.26ac7b78.js.map"
   },
   "entrypoints": [
     "static/css/main.0449c62c.css",
-    "static/js/main.c41b288c.js"
+    "static/js/main.26ac7b78.js"
   ]
 }
