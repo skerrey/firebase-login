@@ -6,7 +6,7 @@ import {
 } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import logo from '../img/logo.png';
+import logo from '../img/logo.png'; // Logo from two sources: Prosymbols Premium and Freepik from Flaticon
 
 import { IoMdSettings } from "react-icons/io";
 
