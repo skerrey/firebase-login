@@ -2,7 +2,12 @@
 
 import React, { useContext, useState, useEffect } from 'react';
 import { auth } from '../firebase';
-import { updateProfile } from 'firebase/auth';
+import { 
+  createUserWithEmailAndPassword, 
+  updateProfile, 
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail
+} from 'firebase/auth';
 
 const AuthContext = React.createContext();
 
@@ -15,7 +20,7 @@ export default function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   function signup(email, password) { // Signup
-    return auth.createUserWithEmailAndPassword(email, password);
+    return createUserWithEmailAndPassword(auth, email, password);
   };
 
   function updateInfo(name) { // Update user info
@@ -23,7 +28,7 @@ export default function AuthProvider({ children }) {
   }
 
   function login(email, password) { // Login
-    return auth.signInWithEmailAndPassword(email, password); // Change this function to log into server (firebase alternative)
+    return signInWithEmailAndPassword(auth, email, password); // Change this function to log into server (firebase alternative)
   };
 
   function logout() { // Logout
@@ -31,7 +36,7 @@ export default function AuthProvider({ children }) {
   }
 
   function resetPassword(email) { // Reset password
-    return auth.sendPasswordResetEmail(email);
+    return sendPasswordResetEmail(auth, email);
   }
 
   function updateEmail(email) { // Update email
