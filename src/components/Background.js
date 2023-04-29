@@ -1,11 +1,11 @@
 // Description: Background image for site
 
-import React from 'react'
+import React from 'react';
 
 export default function Background() {
   return (
     <>
-      <div style={{
+      <div data-testid="background-overlay" style={{
         backgroundColor: "rgba(0, 0, 0, 0.35)",
         opacity: "0.4",
         position: "absolute",
@@ -14,7 +14,7 @@ export default function Background() {
         height: "100vh",
       }}>
       </div>  
-      <div style={{
+      <div data-testid="background-image" style={{
         backgroundImage: `url('https://images.pexels.com/photos/5186869/pexels-photo-5186869.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`, 
         backgroundPosition: 'center',
         position: "absolute",
