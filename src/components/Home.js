@@ -13,12 +13,11 @@ export default function Home() {
         color: "white",
         height: "100vh",
       }}>
-
         {!currentUser ? 
-          <div>
+          <div data-testid="welcome">
             Welcome to <br/> Firebase Login App
           </div>      :               
-          <div>
+          <div data-testid="welcome-user">
             Welcome <br/> {currentUser.displayName}
           </div>
         }
