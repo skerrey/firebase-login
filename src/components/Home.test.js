@@ -14,13 +14,13 @@ describe('Home', () => {
   test('render welcome message to authenticated user', () => {
     useAuth.mockImplementation(() => ({
       currentUser: {
-        displayName: 'testName'
+        displayName: 'John Doe'
       },
       loading: false
     }));
     render(<Home />);
     const welcome = screen.getByTestId('welcome-user');
-    expect(welcome).toHaveTextContent('Welcome testName');
+    expect(welcome).toHaveTextContent('Welcome John Doe');
   });
 
   test('render welcome message to unauthenticated user', () => {
