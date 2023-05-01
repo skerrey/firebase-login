@@ -74,15 +74,15 @@ describe('ForgotPassword', () => {
 
   test('login button, redirects to login page', async () => {
     render(mockRouter);
-    const updateProfileButton = screen.getByRole('link', { name: 'Login'})
-    await user.click(updateProfileButton);
+    const loginButton = screen.getByRole('link', { name: 'Login'})
+    await user.click(loginButton);
     expect(window.location.pathname).toBe('/login');
   });
 
   test('signup button, redirects to signup page', async () => {
     render(mockRouter);
-    const updateProfileButton = screen.getByRole('link', { name: 'Sign Up'})
-    await user.click(updateProfileButton);
+    const signupButton = screen.getByRole('link', { name: 'Sign Up'})
+    await user.click(signupButton);
     expect(window.location.pathname).toBe('/signup');
   });
 });
