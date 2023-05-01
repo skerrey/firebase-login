@@ -31,7 +31,7 @@ const mockRouter = (
 )
 
 describe('ForgotPassword', () => {
-  test('renders the forgot password form', () => {
+  test('renders the password reset form', () => {
     render(mockRouter);
     expect(screen.getByText('Password Reset')).toBeInTheDocument();
     expect(screen.getByTestId('email-label')).toBeInTheDocument();
