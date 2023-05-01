@@ -70,6 +70,6 @@ describe('Dashboard', () => {
     render(mockRouter);
     const logoutButton = screen.getByRole('button', { name: 'Log Out' });
     await user.click(logoutButton);
-    expect(screen.getByTestId('error')).toHaveTextContent('Failed to log out');
+    expect(screen.getByText('Failed to log out')).toBeInTheDocument();
   });
 });
