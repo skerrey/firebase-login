@@ -10,13 +10,11 @@ import { BrowserRouter } from 'react-router-dom';
 const user = userEvent.setup();
 const mockResetPassword = jest.fn();
 const mockNavigate = jest.fn();
-const mockLoading = false;
 
 jest.mock('../contexts/AuthContext', () => ({
   useAuth: () => {
     return {  
-      resetPassword: mockResetPassword,
-      loading: mockLoading
+      resetPassword: mockResetPassword
     }
   }
 }));
