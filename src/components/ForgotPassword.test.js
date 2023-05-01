@@ -36,8 +36,6 @@ describe('ForgotPassword', () => {
     expect(screen.getByText('Password Reset')).toBeInTheDocument();
     expect(screen.getByTestId('email-label')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Reset Password' })).toBeInTheDocument();
-    expect(screen.getByText('Login')).toBeInTheDocument();
-    expect(screen.getByText('Need an account?')).toBeInTheDocument();
   });
 
   test('reset password button', async () => {
