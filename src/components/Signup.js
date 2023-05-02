@@ -60,24 +60,24 @@ export default function Signup() {
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
                 <Form.Group id="first-name">
-                  <Form.Label>First Name</Form.Label>
-                  <Form.Control type="text" ref={firstNameRef} required />
+                  <Form.Label data-testid="first-name-label">First Name</Form.Label>
+                  <Form.Control data-testid="first-name-input" type="text" ref={firstNameRef} required />
                 </Form.Group>
                 <Form.Group id="last-name">
-                  <Form.Label>Last Name</Form.Label>
-                  <Form.Control type="text" ref={lastNameRef} required />
+                  <Form.Label data-testid="last-name-label">Last Name</Form.Label>
+                  <Form.Control data-testid="last-name-input" type="text" ref={lastNameRef} required />
                 </Form.Group>
                 <Form.Group id="email">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" ref={emailRef} required />
+                  <Form.Label data-testid="email-label">Email</Form.Label>
+                  <Form.Control data-testid="email-input" type="email" ref={emailRef} required />
                 </Form.Group>
                 <Form.Group id="password" className="my-2">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" ref={passwordRef} required />
+                  <Form.Label data-testid="password-label">Password</Form.Label>
+                  <Form.Control data-testid="password-input" type="password" ref={passwordRef} required />
                 </Form.Group>
                 <Form.Group id="password-confirm">
-                  <Form.Label>Password Confirmation</Form.Label>
-                  <Form.Control type="password" ref={passwordConfirmRef} required />
+                  <Form.Label data-testid="password-confirm-label">Password Confirmation</Form.Label>
+                  <Form.Control data-testid="password-confirm-input" type="password" ref={passwordConfirmRef} required />
                 </Form.Group>
                 <Button disabled={loading} className="w-100 mt-3" type="submit">
                   Sign Up
