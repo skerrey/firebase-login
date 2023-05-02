@@ -35,7 +35,7 @@ const mockRouter = (
 describe('Login', () => {
   test('renders the login form', () => {
     render(mockRouter);
-    // expect(screen.getByText('Log In')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Log In' })).toBeInTheDocument();
     expect(screen.getByTestId('email-label')).toBeInTheDocument();
     expect(screen.getByTestId('password-label')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Log In' })).toBeInTheDocument();
