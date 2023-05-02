@@ -71,24 +71,24 @@ export default function UpdateProfile() {
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
                 <Form.Group id="first-name">
-                  <Form.Label>First Name</Form.Label>
-                  <Form.Control type="text" ref={firstNameRef} required defaultValue={nameArr[0]} />
+                  <Form.Label data-testid="first-name-label">First Name</Form.Label>
+                  <Form.Control data-testid="first-name-input" type="text" ref={firstNameRef} required defaultValue={nameArr[0]} />
                 </Form.Group>
                 <Form.Group id="last-name">
-                  <Form.Label>Last Name</Form.Label>
-                  <Form.Control type="text" ref={lastNameRef} required defaultValue={nameArr[1]} />
+                  <Form.Label data-testid="last-name-label">Last Name</Form.Label>
+                  <Form.Control data-testid="last-name-input" type="text" ref={lastNameRef} required defaultValue={nameArr[1]} />
                 </Form.Group>
                 <Form.Group id="email">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" ref={emailRef} required defaultValue={currentUser.email}/>
+                  <Form.Label data-testid="email-label">Email</Form.Label>
+                  <Form.Control data-testid="email-input" type="email" ref={emailRef} required defaultValue={currentUser.email}/>
                 </Form.Group>
                 <Form.Group id="password" className="my-2">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" ref={passwordRef} placeholder='Leave blank to keep the same' />
+                  <Form.Label data-testid="password-label">Password</Form.Label>
+                  <Form.Control data-testid="password-input" type="password" ref={passwordRef} placeholder='Leave blank to keep the same' />
                 </Form.Group>
                 <Form.Group id="password-confirm">
-                  <Form.Label>Password Confirmation</Form.Label>
-                  <Form.Control type="password" ref={passwordConfirmRef} placeholder='Leave blank to keep the same' />
+                  <Form.Label data-testid="password-confirm-label">Password Confirmation</Form.Label>
+                  <Form.Control data-testid="password-confirm-input" type="password" ref={passwordConfirmRef} placeholder='Leave blank to keep the same' />
                 </Form.Group>
                 <Button disabled={loading} className="w-100 mt-3" type="submit">
                   Update
