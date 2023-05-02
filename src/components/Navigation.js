@@ -42,7 +42,7 @@ export default function Navigation() {
               {/* If current user display dropdown, else display login */}
               {!currentUser ? 
                 <Nav.Link href="/login">Login</Nav.Link> :               
-                <NavDropdown title={currentUser.displayName} id="basic-nav-dropdown">
+                <NavDropdown data-testid="dropdown" label="dropdown-menu" title={currentUser.displayName} id="basic-nav-dropdown">
                   <NavDropdown.Item href="/dashboard">Dashboard</NavDropdown.Item>
                   <NavDropdown.Item href="/settings">Settings <IoMdSettings /> </NavDropdown.Item>
                   <NavDropdown.Divider />
